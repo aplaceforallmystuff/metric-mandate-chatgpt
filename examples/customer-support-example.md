@@ -10,7 +10,7 @@ This example shows how the Metric Mandate framework transforms a vague AI projec
 
 **User:** I want to use AI to help with customer support tickets.
 
-**Claude:** Let's define what success looks like. Question 1: What specific number will change? "Help with tickets" isn't measurable. Are we talking about:
+**ChatGPT:** Let's define what success looks like. Question 1: What specific number will change? "Help with tickets" isn't measurable. Are we talking about:
 - Average resolution time?
 - First response time?
 - Customer satisfaction scores?
@@ -20,39 +20,47 @@ Pick ONE specific metric.
 
 **User:** Average resolution time.
 
-**Claude:** Good. Question 2: What is that number TODAY? I need your current baseline with a data source - not "about X hours" but actual measured data.
+**ChatGPT:** Good. Question 2: What is that number TODAY? I need your current baseline with a data source - not "about X hours" but actual measured data.
 
 **User:** It's around 4-5 hours based on last quarter.
 
-**Claude:** Close, but not specific enough. Pull the actual data. Is it 4.2 hours? 4.8 hours? The baseline needs to be precise or you won't know if you've improved. Can you check your ticket system for Q4 2024 data?
+**ChatGPT:** Close, but not specific enough. Pull the actual data. Is it 4.2 hours? 4.8 hours? The baseline needs to be precise or you won't know if you've improved. Can you check your ticket system for Q4 2024 data?
 
 **User:** Okay, looking at Q4 2024... average resolution time was 4.2 hours across 12,000 tickets.
 
-**Claude:** Perfect - that's a real baseline. Question 3: What's the minimum improvement that justifies the investment? If you're spending $50,000 on this implementation, what improvement makes that worthwhile? 10%? 30%? 50%?
+**ChatGPT:** Perfect - that's a real baseline. Question 3: What's the minimum improvement that justifies the investment? If you're spending $50,000 on this implementation, what improvement makes that worthwhile? 10%? 30%? 50%?
 
 **User:** I'd say at least 30% improvement to justify the cost.
 
-**Claude:** Good. So you want to go from 4.2 hours to... what target?
+**ChatGPT:** Good. So you want to go from 4.2 hours to... what target?
 
 **User:** Under 3 hours would be 30% improvement.
 
-**Claude:** Actually, let me check that math. 30% of 4.2 hours is 1.26 hours, so 30% improvement would bring you to 2.94 hours. Is that your target? Under 3 hours?
+**ChatGPT:** Actually, let me check that math. 30% of 4.2 hours is 1.26 hours, so 30% improvement would bring you to 2.94 hours. Is that your target? Under 3 hours?
 
 **User:** Yes, under 3 hours.
 
-**Claude:** Question 4: When will you measure? What's your timeline?
+**ChatGPT:** Question 4: When will you measure? What's your timeline?
 
 **User:** After 90 days in production.
 
-**Claude:** Good - that's specific. Question 5: This is the hardest one - what result means you STOP? If after 90 days you've only achieved a 15% improvement instead of 30%, what do you do?
+**ChatGPT:** Good - that's specific. Question 5: This is the hardest one - what result means you STOP? If after 90 days you've only achieved a 15% improvement instead of 30%, what do you do?
 
 **User:** Hmm... I guess if we're not at least at 3.5 hours by day 60, that would be a red flag.
 
-**Claude:** So your kill criteria is: if not below 3.5 hours by day 60, you'll reassess the approach. Correct?
+**ChatGPT:** So your kill criteria is: if not below 3.5 hours by day 60, you'll reassess the approach. Correct?
 
 **User:** Yes, exactly.
 
-**Claude:** Perfect. Here's your complete Metric Mandate:
+**ChatGPT:** All 5 questions locked in. Now the stress test — how would someone hit "under 3 hours resolution time" without actually solving the problem?
+
+**User:** I suppose agents could just close tickets faster without properly resolving them. Or they could cherry-pick easy tickets and leave hard ones in the queue.
+
+**ChatGPT:** Both valid gaming vectors. You need a companion metric that breaks if someone games resolution time. Customer satisfaction (CSAT) on resolved tickets works well — if agents rush closures or dodge hard tickets, CSAT drops. What's your current CSAT score?
+
+**User:** 3.8 out of 5.
+
+**ChatGPT:** Your gameability mitigation: resolution time under 3 hours AND CSAT stays at or above 3.8. If resolution time drops but CSAT drops with it, someone's gaming the metric. Here's your complete Metric Mandate:
 
 ## Your AI Project Metric Mandate
 
@@ -63,6 +71,7 @@ Pick ONE specific metric.
 | **Minimum success?** | Under 3 hours (30% improvement) by day 90 |
 | **Measurement timeline?** | 90 days of production use |
 | **Kill criteria?** | If not below 3.5 hours by day 60, reassess approach |
+| **Gameability check?** | Premature closure / cherry-picking → mitigated by CSAT ≥ 3.8/5 |
 
 ## Status
 
@@ -78,5 +87,6 @@ Notice how the framework transformed:
 - Vague improvement goal → Specific target (under 3 hours = 30% improvement)
 - No timeline → Specific measurement point (90 days)
 - No failure definition → Clear kill criteria (3.5 hours at day 60)
+- No gaming defence → Companion metric (CSAT ≥ 3.8) catches premature closures
 
-The final version might feel like overkill. It's not. It's the difference between a project that can succeed or fail — and therefore be learned from — versus a project that just continues indefinitely.
+The final version might feel like overkill. It's not. It's the difference between a project that can succeed or fail — and therefore be learned from — versus a project that just continues indefinitely. And the gameability check ensures your "success" actually means something.

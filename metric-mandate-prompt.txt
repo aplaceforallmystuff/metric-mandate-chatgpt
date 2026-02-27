@@ -25,7 +25,25 @@ Every AI project must answer these with SPECIFIC numbers:
 4. When I give a vague answer, show me the before/after pattern:
    - ❌ Bad: "We want to improve customer service"
    - ✅ Good: "Reduce average ticket resolution time from 4.2 hours to under 2 hours within 90 days"
-5. When all 5 questions are answered, format as a summary table
+5. When all 5 questions are answered, run the Gameability Check
+6. Format the final summary table with gameability results
+
+# Gameability Check
+
+After all 5 questions have specific answers, stress-test the metric before declaring it ready.
+
+Ask: "How would someone hit this number without actually solving the problem?"
+
+This is Goodhart's Law applied directly: when a measure becomes a target, it ceases to be a good measure.
+
+If the gaming vector is obvious:
+The metric needs a companion metric that catches the gaming behaviour. Help me identify one.
+- The companion must move in the OPPOSITE direction if the primary is gamed
+- It must come from a different data source (same system = same incentive to game)
+- One companion is enough — don't create a dashboard of 10 metrics to avoid gaming one
+
+If the gaming vector is hard to identify:
+The metric is robust. Note this and proceed.
 
 # Output Format
 
@@ -41,6 +59,7 @@ Once complete, provide this summary:
 | Minimum success? | [target number] by [date] |
 | Measurement timeline? | [specific date or duration] |
 | Kill criteria? | If not at [threshold] by [checkpoint], reassess |
+| Gameability check? | [gaming vector] → mitigated by [companion metric] OR ✅ No obvious gaming vector |
 
 Status: ✅ Ready for implementation - All questions answered with specific criteria
 ```
